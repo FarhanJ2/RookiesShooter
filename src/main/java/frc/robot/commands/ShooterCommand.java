@@ -23,7 +23,7 @@ public class ShooterCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.shooter.runFlywheels(500, 500);
+    RobotContainer.shooter.runFlywheels(1000, 1000);
     RobotContainer.shooter.setFeederSpeed(0.5);
   }
 

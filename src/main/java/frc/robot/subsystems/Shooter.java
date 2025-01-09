@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Shooter extends SubsystemBase {
 
   private final PIDController topFlywheelPID = 
-    new PIDController(1, 0, 0);
+    new PIDController(0.01, 0, 0);
 
   private final PIDController bottomFlywheelPID =
     new PIDController(0.01, 0, 0);
@@ -51,7 +51,7 @@ public class Shooter extends SubsystemBase {
     topFlywheelPID.setTolerance(50);
     bottomFlywheelPID.setTolerance(50);
 
-    controller.setGoal(0.5);
+    controller.setGoal(1.03);
   }
 
   public double getTopFlywheelRPM(){
