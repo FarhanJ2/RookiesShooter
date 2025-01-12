@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.IntakeCommands;
 import frc.robot.commands.PodiumShot;
 import frc.robot.commands.ShooterCommand;
+import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 
@@ -17,6 +18,7 @@ public class RobotContainer {
     //Declares/Creates new intake object
     public static Intake intake  = new Intake();
     public static Shooter shooter = new Shooter();
+    public static Elevator elevator = new Elevator();
     //Declares the controller
     private final CommandXboxController controller = new CommandXboxController(0);
 
@@ -27,7 +29,8 @@ public class RobotContainer {
     private void configureBindings() {
         controller.rightBumper().whileTrue(new IntakeCommands());
         controller.leftBumper().whileTrue(new ShooterCommand());
-        //controller.x().whileTrue(new PodiumShot());
+        controller.a().onTrue(elevator.getHomeCommand());
+        controller.y().onTrue(elevator.getFullExtendCommand());
     }
 
     public Command getAutonomousCommand() {
